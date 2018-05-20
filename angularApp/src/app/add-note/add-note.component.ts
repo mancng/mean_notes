@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-add-note',
@@ -8,11 +9,18 @@ import { Router } from '@angular/router';
 })
 export class AddNoteComponent implements OnInit {
 
-  noteContent: string;
+  newNote: object = {noteContent: ""};
 
-  constructor(private _router: Router) { }
+  constructor(private _route: ActivatedRoute, private _httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
   }
 
+  addNote(){
+    this._httpService.addNotes(this.newNote)
+    .subscribe((responseData:any)=>{
+      console.log('responseData', responseData);
+      this._router.navigate(['']);
+    });
+  }
 }

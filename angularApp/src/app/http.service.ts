@@ -12,4 +12,8 @@ export class HttpService {
     return this._http.get('/api/notes');
   }
 
+  addNotes(noteObj){
+    return this._http.post('/api/notes', noteObj);
+  }
+
 }

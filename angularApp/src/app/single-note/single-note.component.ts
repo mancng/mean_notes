@@ -8,8 +8,8 @@ import { HttpService } from '../http.service';
 })
 export class SingleNoteComponent implements OnInit {
 
+  newNote: object = {noteContent: ""};
   notes: any[] = [];
-
 
   constructor(private _httpService: HttpService) { }
 
@@ -24,5 +24,16 @@ export class SingleNoteComponent implements OnInit {
       this.notes = data.notes;
     });
   }
+
+  addNote(){
+    this._httpService.addNotes(this.newNote)
+    .subscribe((responseData:any)=>{
+      console.log('responseData', responseData);
+      this.newNote = {noteContent: ""};
+      this.getNotesFromService();
+    });
+  }
+
+
 
 }

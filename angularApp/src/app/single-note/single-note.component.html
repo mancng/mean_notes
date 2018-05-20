@@ -1,4 +1,11 @@
 <div id="wrapper">
+
+  <div id="add-div">
+    <span>Note: </span>
+    <input id="note-input" type="text" name="note-input" [(ngModel)]="newNote.noteContent">
+    <button (click)="addNote()">Add Note</button>
+  </div>
+
   <div *ngFor="let x of notes">
       <span id="timestamp">{{x.createdAt}}</span>
       <p id="note-content">{{x.noteContent}}</p>
