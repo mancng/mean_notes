@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-single-note',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleNoteComponent implements OnInit {
 
-  constructor() { }
+  notes: any[] = [];
 
-  ngOnInit() {
+
+  constructor(private _httpService: HttpService) { }
+
+  ngOnInit(){
+    this.getNotesFromService()
+  }
+
+  getNotesFromService(){
+    let observable = this._httpService.getNotes()
+    observable.subscribe((data: any) => {
+      console.log("Got the data", data)
+      this.notes = data.notes;
+    });
   }
 
 }

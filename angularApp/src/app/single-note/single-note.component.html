@@ -1,3 +1,6 @@
-<p>
-  single-note works!
-</p>
+<div id="wrapper">
+  <div *ngFor="let x of notes">
+      <span id="timestamp">{{x.createdAt}}</span>
+      <p id="note-content">{{x.noteContent}}</p>
+  </div>
+</div>

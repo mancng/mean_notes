@@ -6,7 +6,7 @@ var Note = mongoose.model('Note');
 
 module.exports = {
     getAllNotes: function(req, res){
-        Note.find({}, function(err, question){
+        Note.find({}, function(err, note){
             if(err){
                 console.log("Error getting all Notes", err);
                 res.json({message: "Error", error: err});

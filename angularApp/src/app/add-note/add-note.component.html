@@ -1,3 +1,8 @@
-<p>
-  add-note works!
-</p>
+<div id="wrapper">
+  <span>Note: </span>
+  <input id="note-input" type="text" name="note-input" [(ngModel)]="noteContent">
+  <button>Add Note</button>
+</div>
+
+<app-single-note></app-single-note>
+<p>OK!</p>
